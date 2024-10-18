@@ -71,8 +71,11 @@ for question in questions[1:]:
         answers = question["choices"]
         correct_answers = []
         for answer in answers:
+            #print(answer)
             choice_id = answer["_id"]
-            choice_choice = answer["choice"]
+            choice_choice = None
+            if ("choice" in answer.keys()):
+                choice_choice = answer["choice"]
             choice_is_correct = answer["isCorrect"]
             print(f"{'[O]' if choice_is_correct else '[X]'} Answer #{choice_id} | choice: {choice_choice} | isCorrect: {choice_is_correct}")
             if choice_is_correct:
